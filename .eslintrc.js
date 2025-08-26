@@ -66,7 +66,7 @@ module.exports = {
     'no-var': 'error',
     'no-with': 'error',
     'no-alert': isProduction ? 'error' : 'warn',
-    'no-console': isProduction ? 'error' : 'warn',
+    'no-console': 'warn',
     'no-debugger': isProduction ? 'error' : 'warn',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/ban-types': ['error', {

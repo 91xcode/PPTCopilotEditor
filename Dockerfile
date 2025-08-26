@@ -5,6 +5,8 @@ WORKDIR /home/app
 COPY . .
 
 RUN npm config set registry https://registry.npmmirror.com/ && npm install
+# 构建生产版本以减少内存占用
+RUN npm run build
 
 EXPOSE 7777
 
@@ -13,4 +15,6 @@ ARG SERVER_IP
 # 运行env.py传递参数
 RUN python3 env.py $SERVER_IP
 
-CMD ["npm", "run", "serve", "--", "--port", "7777"]
+# 安装serve来运行静态文件
+RUN npm install -g serve
+CMD ["serve", "-s", "dist", "-l", "7777"]
